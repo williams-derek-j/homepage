@@ -1,20 +1,65 @@
 html {
-    font-size: 24px;
+    font-size: 1.5rem;
 
     /*display: flex;*/
     /*justify-content: center;*/
     /*align-items: center;*/
 }
 
-@media (max-width: 900px) {
+/*@media (max-width: 900px) {*/
+/*    header {*/
+/*        display: flex;*/
+/*        flex-direction: column;*/
+/*        align-items: center;*/
+/*    }*/
+
+/*    header > h1 {*/
+/*        transform: translateX(0) !important;*/
+/*    }*/
+/*}*/
+
+@media (orientation: portrait) {
     header {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    header > h1 {
-        transform: translateX(0) !important;
+    header > div.imageContainer {
+        position: relative;
+    }
+
+    header > div > img {
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+
+    header > div > h1 {
+        transform: translateX(0) translateY(0%) !important;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 1100px) and (orientation: landscape) {
+    header > div.imageContainer {
+        position: relative;
+    }
+
+    header > div > h1 {
+        transform: translateX(0) translateY(100%) !important;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+
+        margin-bottom: 0;
+    }
+
+    header > .about {
+        margin-top: 5%;
     }
 }
 
@@ -56,7 +101,8 @@ header {
     /*flex-wrap: wrap;*/
 }
 
-header > img {
+header > div > img {
+
     border: 1px solid blue;
 
     aspect-ratio: 1 / 1.5;
@@ -64,8 +110,9 @@ header > img {
 
     /*max-height: 100%;*/
     /*width: auto;*/
-    max-width: min(100%, 100vh);
-    max-height: min(100vw, 100vh);
+    min-width: 50%;
+    max-width: min(50%, 100vh);
+    max-height: min(90vw, 90vh);
 
     margin: 0 2vw 1vw 0;
 
@@ -76,14 +123,18 @@ header > img {
     /*justify-self: center;*/
 }
 
-header > h1 {
-    /*float: left;*/
+header > div > h1 {
+    /*font-size: 2rem;*/
+    /*font-weight: bolder;*/
+
     transform: translateX(-10%)
 }
 
 header > .about {
     background-color: lightgray;
     border: 2px solid green;
+
+    min-width: 0px;
 
     padding: 2vw;
 }
