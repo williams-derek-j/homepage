@@ -1,9 +1,21 @@
 html {
-    font-size: 30px;
+    font-size: 24px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
+
+@media (max-width: 900px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header > h1 {
+        transform: translateX(0) !important;
+    }
 }
 
 /*@media (max-width: 720px) {*/
@@ -39,9 +51,9 @@ header {
 
     min-height: min(100%, 100vh);
 
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*flex-wrap: wrap;*/
 }
 
 header > img {
@@ -59,9 +71,14 @@ header > img {
 
     float: left;
 
-    flex-grow: 0;
+    /*flex-grow: 0;*/
 
     /*justify-self: center;*/
+}
+
+header > h1 {
+    /*float: left;*/
+    transform: translateX(-10%)
 }
 
 header > .about {
