@@ -1,147 +1,125 @@
 html {
     font-size: 1.5rem;
 
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
+    --padding: min(5vw, 5vh);
 }
 
-/*@media (max-width: 900px) {*/
+/*@media (orientation: portrait) {*/
 /*    header {*/
 /*        display: flex;*/
 /*        flex-direction: column;*/
 /*        align-items: center;*/
+
+/*        width: 100%;*/
 /*    }*/
 
-/*    header > h1 {*/
-/*        transform: translateX(0) !important;*/
+/*    header > div.imageContainer {*/
+/*        position: relative;*/
+/*    }*/
+
+/*    header > div > img {*/
+/*        max-width: 100% !important;*/
+/*        margin: 0 !important;*/
+/*    }*/
+
+/*    header > div > h1 {*/
+/*        transform: translateX(0) translateY(0%) !important;*/
+/*        bottom: 0;*/
+/*        left: 0;*/
+/*        position: absolute;*/
+
+/*        margin-bottom: 0;*/
 /*    }*/
 /*}*/
 
-@media (orientation: portrait) {
-    header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    header > div.imageContainer {
-        position: relative;
-    }
-
-    header > div > img {
-        max-width: 100% !important;
-        margin: 0 !important;
-    }
-
-    header > div > h1 {
-        transform: translateX(0) translateY(0%) !important;
-        bottom: 0;
-        left: 0;
-        position: absolute;
-
-        margin-bottom: 0;
-    }
-}
-
 @media (min-width: 1100px) and (orientation: landscape) {
-    header > div.imageContainer {
-        position: relative;
-    }
+    /*header > div.imageContainer {*/
+    /*    position: relative;*/
+    /*}*/
 
     header > div > h1 {
-        transform: translateX(0) translateY(100%) !important;
+        margin: 0;
+        padding: 0;
+        transform: translateX(10vw) translateY(0%) !important;
         bottom: 0;
         left: 0;
         position: absolute;
 
-        margin-bottom: 0;
+        /*margin-bottom: 0;*/
     }
 
     header > .about {
-        margin-top: 5%;
+        align-self: center;
     }
 }
 
-/*@media (max-width: 720px) {*/
-/*    html {*/
-/*        font-size: 36px;*/
-/*    }*/
-/*}*/
-
-/*@media (min-width: 721px) {*/
-/*    html {*/
-/*        !*font-size: 36px;*!*/
-
-/*        display: flex;*/
-/*        justify-content: center;*/
-/*        align-items: center;*/
-/*    }*/
-/*}*/
-
 body {
-    box-sizing: border-box;
-    border: 2px solid blue;
+    border: 4px solid blue;
 
-    width: 96vw;
+    padding: var(--padding);
 }
 
 body > * {
-    padding: min(5vw, 5vh);
+    padding: var(--padding);
 }
 
 header {
     box-sizing: border-box;
     border: 2px solid red;
 
-    min-height: min(100%, 100vh);
-
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    /*flex-wrap: wrap;*/
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
-header > div > img {
+header > div.imageContainer {
 
+}
+
+header > div.imageContainer > img {
     border: 1px solid blue;
 
     aspect-ratio: 1 / 1.5;
     object-fit: cover;
 
-    /*max-height: 100%;*/
-    /*width: auto;*/
-    min-width: 50%;
-    max-width: min(50%, 100vh);
-    max-height: min(90vw, 90vh);
-
-    margin: 0 2vw 1vw 0;
-
     float: left;
-
-    /*flex-grow: 0;*/
-
-    /*justify-self: center;*/
+    margin: 0 2vw 1vw 0;
 }
 
-header > div > h1 {
-    /*font-size: 2rem;*/
-    /*font-weight: bolder;*/
+header > .imageContainer > h1 {
+    font-size: 2rem;
+    font-weight: bolder;
 
-    transform: translateX(-10%)
+    transform: translateX(-5vw)
 }
 
-header > .about {
+header > .imageContainer > .about {
     background-color: lightgray;
     border: 2px solid green;
-
-    min-width: 0px;
-
-    padding: 2vw;
 }
 
-header > .about > h2 {
+header > .imageContainer > .about > h2 {
     margin-top: 0;
 }
 
-header > .about > p {
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px),1fr));
+
+    gap: 3rem;
+}
+
+main > article.project {
+    border: 1px solid orange;
+}
+
+main > article.project > img {
+    width: 100%;
+    /*max-width: 100%;*/
+
+    aspect-ratio: 1.5 / 1;
+    object-fit: cover;
+
+    align-self: center;
+
+    border: 1px solid purple;
 }
