@@ -17,27 +17,57 @@
     --fw-semi-bold: 500;
     --fw-bold: 700;
 
-    --fs-0_25: 0.25rem;
-    --fs-0_5: 0.5rem;
-    --fs-0_75: 0.75rem;
+    --fs-0_25: calc(var(--fs-1) * 0.25);
+    --fs-0_5: calc(var(--fs-1) * 0.5);
+    --fs-0_75: calc(var(--fs-1) * 0.75);
+    --fs-1_25: calc(var(--fs-1) * 1.25);
+    --fs-1_5: calc(var(--fs-1) * 1.5);
+    --fs-1_75: calc(var(--fs-1) * 1.75);
+    --fs-2: calc(var(--fs-1) * 2);
+    --fs-2_25: calc(var(--fs-1) * 2.25);
+    --fs-2_5: calc(var(--fs-1) * 2.5);
+    --fs-2_75: calc(var(--fs-1) * 2.75);
+    --fs-3: calc(var(--fs-1) * 3);
+    --fs-3_25: calc(var(--fs-1) * 3.25);
+    --fs-3_5: calc(var(--fs-1) * 3.5);
+    --fs-3_75: calc(var(--fs-1) * 3.75);
+    --fs-4: calc(var(--fs-1) * 4);
+    --fs-4_25: calc(var(--fs-1) * 4.25);
+    --fs-4_5: calc(var(--fs-1) * 4.5);
+    --fs-4_75: calc(var(--fs-1) * 4.75);
+    --fs-5: calc(var(--fs-1) * 5);
     --fs-1: 1rem;
-    --fs-1_25: 1.25rem;
-    --fs-1_5: 1.5rem;
-    --fs-1_75: 1.75rem;
-    --fs-2: 2rem;
-    --fs-2_25: 2.25rem;
-    --fs-2_5: 2.5rem;
-    --fs-2_75: 2.75rem;
-    --fs-3: 3rem;
+
+    --fs-small: var(--fs-0_75);
+    --fs-normal-smaller: var(--fs-1);
+    --fs-normal-bigger: var(--fs-1_5);
+    --fs-big: var(--fs-3);
+    --fs-biggest: var(--fs-5);
 
     --fs-body: var(--fs-1);
     --fs-header: var(--fs-2);
     --fs-footer: var(--fs-2);
 
-    --flow-spacer: var(--fs-2);
+    --gap-0_25: calc(var(--gap-1) * 0.25);
+    --gap-0_5: calc(var(--gap-1) * 0.5);
+    --gap-2: calc(var(--gap-1) * 2);
+    --gap-3: calc(var(--gap-1) * 3);
+    --gap-4: calc(var(--gap-1) * 4);
+    --gap-5: calc(var(--gap-1) * 5);
+    --gap-1: 1rem;
+
+    --flow-spacer: var(--gap-2);
+
+    --aspect-portrait: 1 / 1.5;
+    --aspect-wide-portrait: 1 / 1.25;
+    --aspect-landscape: 2 / 1;
+
+    --screen-small: 375px;
+    --screen-medium: 1024px;
+    --screen-large: 1440px;
 }
 
-@media (max-width: 375px) {
+@media (max-width: var(--screen-small)) {
     :root {
         --fs-body: var(--fs-0_5);
         --fs-header: var(--fs-1);
@@ -45,7 +75,7 @@
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: var(--screen-medium)) {
     :root {
         --fs-body: var(--fs-0_75);
         --fs-header: var(--fs-1_5);
@@ -60,6 +90,8 @@
     margin: 0;
     padding: 0;
     font: inherit;
+
+    border: solid 1px red;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -76,6 +108,8 @@ html:focus-within {
 html,
 body {
     height: 100%;
+
+    border: solid 5px blue;
 }
 
 /* Set core body defaults */
@@ -121,6 +155,12 @@ body {
     color: var(--clr-neutral-700);
 }
 
+.primary-header img {
+    aspect-ratio: var(--aspect-portrait);
+
+    object-fit: cover;
+}
+
 /* Utility classes */
 
 .visually-hidden {
@@ -150,20 +190,22 @@ body {
 .even-columns {
     display: grid;
 
-    grid-auto-flow: column;
-    grid-auto-columns: 1fr;
+    /*grid-auto-flow: column;*/
+    /*grid-auto-columns: 1fr;*/
 
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--screen-small)),1fr));
+
+    gap: var(--gap-1);
 }
 
 .sixty40-flex {
     display: flex;
     flex-direction: row;
 
-    .sixty40:first-child {
+    .sixty40-flex:first-child {
         flex-basis: 60%;
     }
-    .sixty40:last-child {
+    .sixty40-flex:last-child {
         flex-basis: 40%;
     }
 }
@@ -171,13 +213,18 @@ body {
 .forty60-flex {
     display: flex;
     flex-direction: row;
+}
 
-    .sixty40:first-child {
-        flex-basis: 40%;
-    }
-    .sixty40:last-child {
-        flex-basis: 60%;
-    }
+.forty60-flex > * {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.forty60-flex > :first-child {
+    flex-basis: 40%;
+}
+.forty60-flex > :last-child {
+    flex-basis: 60%;
 }
 
 /*html {*/
