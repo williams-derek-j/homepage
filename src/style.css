@@ -70,42 +70,6 @@
     --screen-large: 1440px;
 }
 
-@media (max-width: 450px) {
-    :root {
-        --fs-body: var(--fs-0_75);
-        --fs-header: var(--fs-1_125);
-        --fs-footer: var(--fs-1_125);
-    }
-
-    .container {
-        --container-padding: var(--gap-2) !important;
-    }
-
-    .primary-header {
-        display: grid;
-
-        grid-template-columns: 1fr !important;
-    }
-}
-
-@media (max-width: 1024px) {
-    :root {
-        --fs-body: var(--fs-0_875);
-        --fs-header: var(--fs-1_3125);
-        --fs-footer: var(--fs-1_3125);
-    }
-
-    .primary-header {
-        display: block !important;
-    }
-
-    .primary-header img {
-        float: left;
-
-        width: calc(40% + var(--container-padding));
-    }
-}
-
 /* https://piccalil.li/blog/a-modern-css-reset */
 
 /* Remove default margin */
@@ -177,6 +141,54 @@ span {
 }
 
 /* general styling */
+
+@media (max-width: 450px) {
+    :root {
+        --fs-body: var(--fs-0_75);
+        --fs-header: var(--fs-1_125);
+        --fs-footer: var(--fs-1_125);
+    }
+
+    .container {
+        --container-padding: var(--gap-2) !important;
+    }
+
+    .primary-header {
+        display: grid;
+
+        grid-template-columns: 1fr !important;
+    }
+
+    .primary-header img {
+        float: none !important;
+
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --fs-body: var(--fs-0_875);
+        --fs-header: var(--fs-1_3125);
+        --fs-footer: var(--fs-1_3125);
+    }
+
+    .primary-header {
+        display: block !important;
+    }
+
+    .primary-header img {
+        float: left;
+
+        width: calc(40% + var(--container-padding));
+    }
+}
+
+@media (min-width: 1025px) {
+    .primary-header img {
+        width: 100%;
+    }
+}
 
 body {
     font-size: var(--fs-body);
