@@ -194,6 +194,36 @@ body {
     color: var(--clr-neutral-700);
 }
 
+.primary-header > .about-me > .social-links {
+    margin-left: auto;
+
+    width: fit-content;
+}
+
+.primary-header > .about-me > .social-links ul {
+    margin-top: 0;
+
+    display: flex;
+
+    gap: var(--fs-small);
+}
+
+.primary-header > .about-me > .social-links li {
+    margin-top: 0;
+
+    display: flex;
+}
+
+.primary-header > .about-me > .social-links a {
+    display: inline-block;
+}
+
+.primary-header > .about-me > .social-links svg {
+    min-width: var(--fs-normal-bigger);
+
+    aspect-ratio: 1 / 1;
+}
+
 .primary-header img {
     aspect-ratio: var(--aspect-portrait);
     object-fit: cover;
@@ -215,34 +245,58 @@ body {
     object-fit: cover;
 }
 
-.project > .project-stub > header {
-    display: flex;
-
-    flex-direction: column;
-}
-
-.project > .project-stub .project-links {
+.project > .project-stub > .project-links {
     margin-top: 0;
     margin-left: auto;
 
     width: fit-content;
 }
 
-.project > .project-stub .project-links ul {
+.project > .project-stub > .project-links ul {
     display: flex;
+
+    gap: var(--fs-small);
 }
 
-.project > .project-stub .project-links li {
+.project > .project-stub > .project-links li {
     margin-top: 0;
 
     display: flex;
 }
 
-.project > .project-stub .project-links a {
+.project > .project-stub > .project-links a {
     display: inline-block;
 }
 
-.project > .project-stub .project-links svg {
+.project > .project-stub > .project-links svg {
+    min-width: var(--fs-normal-bigger);
+
+    aspect-ratio: 1 / 1;
+}
+
+.primary-footer > .contact-me > .social-links {
+    margin-left: auto;
+
+    width: fit-content;
+}
+
+.primary-footer > .contact-me > .social-links ul {
+    display: flex;
+
+    gap: var(--fs-small);
+}
+
+.primary-footer > .contact-me > .social-links li {
+    margin-top: 0;
+
+    display: flex;
+}
+
+.primary-footer > .contact-me > .social-links a {
+    display: inline-block;
+}
+
+.primary-footer > .contact-me > .social-links svg {
     min-width: var(--fs-normal-bigger);
 
     aspect-ratio: 1 / 1;
