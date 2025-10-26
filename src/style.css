@@ -65,9 +65,9 @@
     --aspect-wide-portrait: 1 / 1.25;
     --aspect-landscape: 2 / 1;
 
-    --screen-small: 450px;
-    --screen-medium: 1024px;
-    --screen-large: 1440px;
+    --screen-width-small: 450px;
+    --screen-width-medium: 1024px;
+    --screen-width-large: 1440px;
 }
 
 /* https://piccalil.li/blog/a-modern-css-reset */
@@ -153,9 +153,7 @@ span {
         --container-padding: var(--gap-2) !important;
     }
 
-    .primary-header {
-        display: grid;
-
+    .even-columns, .sixty40, .forty60 {
         grid-template-columns: 1fr !important;
     }
 
@@ -166,7 +164,7 @@ span {
     }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 451px) and (max-width: 1024px) {
     :root {
         --fs-body: var(--fs-0_875);
         --fs-header: var(--fs-1_3125);
@@ -198,7 +196,6 @@ body {
 
 .primary-header img {
     aspect-ratio: var(--aspect-portrait);
-
     object-fit: cover;
 }
 
@@ -206,6 +203,49 @@ body {
     aspect-ratio: 1 / 1;
 
     max-width: var(--fs-normal-bigger);
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+}
+
+.project img {
+    aspect-ratio: var(--aspect-landscape);
+    object-fit: cover;
+}
+
+.project > .project-stub > header {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.project > .project-stub .project-links {
+    margin-top: 0;
+    margin-left: auto;
+
+    width: fit-content;
+}
+
+.project > .project-stub .project-links ul {
+    display: flex;
+}
+
+.project > .project-stub .project-links li {
+    margin-top: 0;
+
+    display: flex;
+}
+
+.project > .project-stub .project-links a {
+    display: inline-block;
+}
+
+.project > .project-stub .project-links svg {
+    min-width: var(--fs-normal-bigger);
+
+    aspect-ratio: 1 / 1;
 }
 
 /* Utility classes */
@@ -238,7 +278,15 @@ body {
 .even-columns {
     display: grid;
 
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--screen-small)),1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--screen-width-small)),1fr));
+
+    gap: var(--gap-1);
+}
+
+.even-row {
+    display: grid;
+
+    grid-template-rows: repeat(auto-fit, minmax(min(100%, var(--screen-width-small)),1fr));
 
     gap: var(--gap-1);
 }
