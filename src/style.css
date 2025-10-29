@@ -178,6 +178,23 @@ p, h1, h2 {
         box-shadow: none !important;
     }
 
+    .primary-header > div:has(img) {
+        text-align: center;
+    }
+
+    .primary-header > div:has(img) > span {
+        display: inline-block;
+        width: 100%;
+
+        z-index: 1;
+
+        transform: translateY(-100%);
+
+        font-size: var(--fs-normal-bigger);
+        font-weight: var(--fw-bold);
+        color: var(--clr-neutral-900);
+    }
+
     .primary-header > .about-me > .social-links {
         margin-inline: auto;
     }
@@ -208,7 +225,7 @@ p, h1, h2 {
 
     .primary-header > .about-me {
         margin-left: var(--gap-5) !important;
-        margin-top: var(--gap-4) !important;
+        margin-top: var(--gap-5) !important;
     }
 
     .primary-footer {
@@ -225,6 +242,25 @@ p, h1, h2 {
 
     .primary-footer img {
         aspect-ratio: var(--aspect-portrait) !important;
+    }
+
+    .primary-header > div:has(img) {
+        position: static;
+    }
+
+    .primary-header > div:has(img) > span {
+        position: absolute;
+        display: inline-block;
+        z-index: 1;
+        margin-bottom: 0;
+
+        right: 0;
+
+        font-size: var(--fs-normal-bigger);
+        font-weight: var(--fw-bold);
+        color: var(--clr-neutral-900);
+
+        transform: translateX(calc(-50%));
     }
 
     .primary-header > .about-me > .social-links {
@@ -247,10 +283,33 @@ p, h1, h2 {
 @media (min-width: 1440px) {
     .primary-header img {
         width: 100%;
+
+        float: left;
+    }
+
+    .primary-header > div:has(img) {
+        text-align: center;
+    }
+
+    .primary-header > div:has(img) > span {
+        display: inline-block;
+        width: 100%;
+
+        z-index: 1;
+
+        transform: translateY(-100%);
+
+        font-size: var(--fs-normal-bigger);
+        font-weight: var(--fw-bold);
+        color: var(--clr-neutral-900);
     }
 
     .primary-header > .about-me {
         margin-top: var(--gap-5) !important;
+    }
+
+    .projects {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%,400px),1fr)) !important;
     }
 }
 
@@ -318,6 +377,8 @@ body {
 }
 
 .projects {
+    display: grid;
+
     gap: var(--gap-3) !important;
 }
 
@@ -454,7 +515,17 @@ body {
 .even-columns {
     display: grid;
 
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--screen-width-small)),1fr));
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+
+    gap: var(--gap-1);
+}
+
+.even-rows {
+    display: grid;
+
+    grid-auto-flow: row;
+    grid-auto-rows: 1fr;
 
     gap: var(--gap-1);
 }
