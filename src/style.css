@@ -47,9 +47,9 @@
 
     --fs-small: var(--fs-0_75);
     --fs-normal-smaller: var(--fs-1);
-    --fs-normal-bigger: var(--fs-1_5);
-    --fs-big: var(--fs-3);
-    --fs-biggest: var(--fs-5);
+    --fs-normal-bigger: var(--fs-1_25);
+    --fs-big: var(--fs-1_5);
+    --fs-biggest: var(--fs-1_75);
 
     --fs-body: var(--fs-1);
     --fs-header: var(--fs-2);
@@ -164,20 +164,6 @@ p, h1, h2 {
         grid-template-columns: 1fr !important;
     }
 
-    .primary-header img {
-        float: none !important;
-
-        width: 100% !important;
-    }
-
-    .primary-footer img {
-        aspect-ratio: var(--aspect-portrait) !important;
-    }
-
-    .primary-header > .about-me {
-        box-shadow: none !important;
-    }
-
     .primary-header > div:has(img) {
         text-align: center;
     }
@@ -193,6 +179,37 @@ p, h1, h2 {
         font-size: var(--fs-normal-bigger);
         font-weight: var(--fw-bold);
         color: var(--clr-neutral-900);
+    }
+
+    .primary-header img {
+        float: none !important;
+
+        width: 100% !important;
+    }
+
+    .primary-footer img {
+        aspect-ratio: var(--aspect-portrait) !important;
+    }
+
+    .primary-header > .about-me {
+        box-shadow: none !important;
+    }
+
+    .primary-header > .about-me > h1 {
+        font-family: serif;
+        font-size: var(--fs-big);
+        font-weight: var(--fw-bold);
+        text-align: center;
+
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .primary-header > .about-me > p {
+        margin-top: 0;
+        padding-top: 0;
+
+        padding-right: var(--gap-2);
     }
 
     .primary-header > .about-me > .social-links {
@@ -223,25 +240,12 @@ p, h1, h2 {
         display: block !important;
     }
 
-    .primary-header > .about-me {
-        margin-left: var(--gap-5) !important;
-        margin-top: var(--gap-5) !important;
-    }
-
-    .primary-footer {
-        grid-template-columns: repeat(auto-fit, minmax(0px,1fr)) !important;
-    }
-
     .primary-header img {
         float: left;
 
         width: calc(40% + var(--container-padding));
 
-        margin-right: var(--gap-1);
-    }
-
-    .primary-footer img {
-        aspect-ratio: var(--aspect-portrait) !important;
+        margin-right: var(--gap-2);
     }
 
     .primary-header > div:has(img) {
@@ -256,11 +260,36 @@ p, h1, h2 {
 
         right: 0;
 
-        font-size: var(--fs-normal-bigger);
+        font-size: var(--fs-biggest);
         font-weight: var(--fw-bold);
         color: var(--clr-neutral-900);
 
         transform: translateX(calc(-50%));
+    }
+
+    .primary-header > .about-me {
+        margin-left: var(--gap-5) !important;
+        margin-top: var(--gap-5) !important;
+        padding-bottom: var(--gap-4) !important;
+    }
+
+    .primary-header > .about-me > h1 {
+        font-family: serif;
+        font-size: var(--fs-big);
+        font-weight: var(--fw-bold);
+        text-align: center;
+
+        margin-bottom: 0;
+        padding-bottom: 0;
+
+        padding-top: var(--gap-5);
+    }
+
+    .primary-header > .about-me > p {
+        margin-top: 0;
+        padding-top: 0;
+
+        padding-right: var(--gap-2);
     }
 
     .primary-header > .about-me > .social-links {
@@ -275,6 +304,14 @@ p, h1, h2 {
         border: 0;
     }
 
+    .primary-footer {
+        grid-template-columns: repeat(auto-fit, minmax(0px,1fr)) !important;
+    }
+
+    .primary-footer img {
+        aspect-ratio: var(--aspect-portrait) !important;
+    }
+
     .projects {
         grid-template-columns: repeat(auto-fit, minmax(min(100%,400px),1fr)) !important;
     }
@@ -282,6 +319,8 @@ p, h1, h2 {
 
 @media (min-width: 1440px) {
     .primary-header img {
+        position: relative;
+
         width: 100%;
 
         float: left;
@@ -293,19 +332,39 @@ p, h1, h2 {
 
     .primary-header > div:has(img) > span {
         display: inline-block;
+        position: relative;
+        z-index: 1;
         width: 100%;
 
-        z-index: 1;
 
         transform: translateY(-100%);
 
-        font-size: var(--fs-normal-bigger);
+        font-size: var(--fs-biggest);
         font-weight: var(--fw-bold);
         color: var(--clr-neutral-900);
     }
 
     .primary-header > .about-me {
         margin-top: var(--gap-5) !important;
+    }
+
+    .primary-header > .about-me > h1 {
+        font-family: serif;
+        font-size: var(--fs-big);
+        font-weight: var(--fw-bold);
+        text-align: left;
+
+        margin-bottom: 0;
+        padding-bottom: 0;
+
+        padding-top: var(--gap-5);
+    }
+
+    .primary-header > .about-me > p {
+        margin-top: 0;
+        padding-top: 0;
+
+        padding-right: var(--gap-2);
     }
 
     .projects {
