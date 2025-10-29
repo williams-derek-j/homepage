@@ -315,6 +315,10 @@ p, h1, h2 {
 }
 
 @media (min-width: 1440px) {
+    .primary-header {
+        padding-bottom: 0 !important;
+    }
+
     .primary-header img {
         position: relative;
 
@@ -324,16 +328,19 @@ p, h1, h2 {
     }
 
     .primary-header > div:has(img) {
+        position: relative;
+
         text-align: center;
     }
 
     .primary-header > div:has(img) > span {
         display: inline-block;
-        position: relative;
+        position: absolute;
         z-index: 1;
         width: 100%;
 
-        transform: translateY(-100%);
+        left: 0;
+        bottom: 0;
     }
 
     .primary-header > .about-me {
@@ -378,7 +385,7 @@ body {
 .primary-header {
 }
 
-.primary-header > div:has(img)::before {
+.primary-header::before {
     background-color: var(--clr-primary-500);
 
     content: '';
@@ -394,7 +401,7 @@ body {
 }
 
 @media (max-width: 600px) {
-    .primary-header > div:has(img)::before {
+    .primary-header::before {
         clip-path: polygon(0 0, 100% 0, 100% 60%, 0 80%);
     }
 }
