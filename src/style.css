@@ -1,5 +1,5 @@
 :root {
-    --clr-primary-500: hsl(191, 95%, 69%);
+    --clr-primary-500: hsl(191, 60%, 40%);
 
     --clr-accent-500: hsl(0, 82%, 61%);
 
@@ -63,6 +63,8 @@
     --gap-5: calc(var(--gap-1) * 5);
     --gap-1: var(--fs-0_5);
 
+    --flow-spacer_0_25: var(--gap-0_5);
+    --flow-spacer_0_5: var(--gap-1);
     --flow-spacer: var(--gap-2);
 
     --aspect-portrait: 1 / 1.5;
@@ -166,6 +168,8 @@ p, h1, h2 {
 
     .primary-header > div:has(img) {
         text-align: center;
+
+        margin-bottom: 0;
     }
 
     .primary-header > div:has(img) > span {
@@ -174,11 +178,8 @@ p, h1, h2 {
 
         z-index: 1;
 
-        transform: translateY(-100%);
-
-        font-size: var(--fs-normal-bigger);
-        font-weight: var(--fw-bold);
-        color: var(--clr-neutral-900);
+        position: absolute;
+        transform: translateX(-50%) translateY(-100%);
     }
 
     .primary-header img {
@@ -260,10 +261,6 @@ p, h1, h2 {
 
         right: 0;
 
-        font-size: var(--fs-biggest);
-        font-weight: var(--fw-bold);
-        color: var(--clr-neutral-900);
-
         transform: translateX(calc(-50%));
     }
 
@@ -336,12 +333,7 @@ p, h1, h2 {
         z-index: 1;
         width: 100%;
 
-
         transform: translateY(-100%);
-
-        font-size: var(--fs-biggest);
-        font-weight: var(--fw-bold);
-        color: var(--clr-neutral-900);
     }
 
     .primary-header > .about-me {
@@ -367,6 +359,11 @@ p, h1, h2 {
         padding-right: var(--gap-2);
     }
 
+    .primary-header > .about-me > .social-links {
+        margin-right: var(--gap-3);
+        margin-bottom: var(--gap-3);
+    }
+
     .projects {
         grid-template-columns: repeat(auto-fit, minmax(min(100%,400px),1fr)) !important;
     }
@@ -378,8 +375,28 @@ body {
     color: var(--clr-neutral-700);
 }
 
-.primary-header, .primary-footer {
+.primary-header {
+}
+
+.primary-header > div:has(img)::before {
     background-color: var(--clr-primary-500);
+
+    content: '';
+    position: absolute;
+    z-index: -1;
+
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
+}
+
+@media (max-width: 600px) {
+    .primary-header > div:has(img)::before {
+        clip-path: polygon(0 0, 100% 0, 100% 60%, 0 80%);
+    }
 }
 
 .primary-header img {
@@ -391,12 +408,25 @@ body {
     z-index: 1;
 }
 
+.primary-header > div:has(img) > span {
+    font-family: serif;
+    font-size: var(--fs-biggest);
+    font-weight: var(--fw-bold);
+    color: antiquewhite;
+
+    text-shadow: -1px -1px 2px black, 1px 1px 2px black;
+}
+
 .primary-header > .about-me {
     background-color: var(--clr-neutral-100);
 
     height: fit-content;
 
     box-shadow: var(--shadow-500);
+}
+
+.primary-header > .about-me > .about-me_blurb {
+    margin-left: var(--gap-1);
 }
 
 .primary-header > .about-me > .social-links {
@@ -471,6 +501,8 @@ body {
     display: inline-block;
 
     width: fit-content;
+
+    font-weight: var(--fw-bold);
 }
 
 .project > .project-stub > .project-stub-header > .project-links {
@@ -480,7 +512,8 @@ body {
     /*top: 0;*/
     right: 0;
 
-    margin-top: 0;
+    margin-top: var(--gap-1);
+    margin-right: var(--gap-1);
     margin-left: auto;
 
     width: fit-content;
@@ -489,7 +522,7 @@ body {
 .project > .project-stub > .project-stub-header > .project-links ul {
     display: flex;
 
-    gap: var(--fs-small);
+    gap: var(--gap-1);
 }
 
 .project > .project-stub > .project-stub-header > .project-links li {
@@ -508,6 +541,10 @@ body {
     aspect-ratio: 1 / 1;
 }
 
+.primary-footer {
+    background-color: var(--clr-primary-500);
+}
+
 .primary-footer > img {
     width: 100%;
     min-height: 100%;
@@ -516,8 +553,68 @@ body {
     object-fit: cover;
 }
 
+.primary-footer > .contact-me {
+    margin-block: auto;
+    margin-right: var(--gap-1);
+
+    font-family: serif;
+    color: white;
+
+    line-height: 1;
+}
+
+.primary-footer > .contact-me > *:first-child {
+    font-size: var(--fs-normal-bigger);
+    font-weight: var(--fw-bold);
+}
+
+.primary-footer > .contact-me > .contact-me_tel {
+    position: relative;
+}
+
+.primary-footer > .contact-me > .contact-me_tel::before {
+    content: '';
+
+    display: inline-block;
+
+    width: var(--fs-normal-smaller);
+    height: var(--fs-normal-smaller);
+    margin-right: var(--gap-0_5);
+
+    position: relative;
+    z-index: 1;
+
+    background-image: url("images/phoneIcon.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.primary-footer > .contact-me > .contact-me_email {
+    position: relative;
+}
+
+.primary-footer > .contact-me > .contact-me_email::before {
+    content: '';
+
+    display: inline-block;
+
+    width: var(--fs-normal-smaller);
+    height: var(--fs-small);
+    margin-right: var(--gap-0_5);
+
+    position: relative;
+    z-index: 1;
+
+    background-image: url("images/emailIcon.png");
+    background-size: cover;
+    background-position: center;
+}
+
+
 .primary-footer > .contact-me > .social-links {
+    margin-top: var(--gap-2);
     margin-right: auto;
+    margin-left: var(--gap-1);
 
     width: fit-content;
 }
@@ -560,6 +657,10 @@ body {
 
 :where(.flow :not(:first-child)) {
     margin-top: var(--flow-spacer, 2em);
+}
+
+:where(.flow_0_5 :not(:first-child)) {
+    margin-top: var(--flow-spacer_0_5, 2em);
 }
 
 .container {
